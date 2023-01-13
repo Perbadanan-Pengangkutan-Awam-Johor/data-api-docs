@@ -1,4 +1,14 @@
 # PAJ Data API Documentation
+![Paj banner](/images/data-api-banner.png)
+
+<p align="center">
+<a title="version" href=""><img src="https://img.shields.io/badge/version-1.0.0-green"></a>
+<a title="version" href=""><img src="https://img.shields.io/badge/Status-Release-green"></a>
+<a title="version" href=""><img src="https://img.shields.io/badge/Copyright-PAJ-blue"></a>
+<a title="version" href=""><img src="https://img.shields.io/badge/License-GNU v3.0-blue"></a>
+<a title="version" href=""><img src="https://img.shields.io/badge/Server-Up-green"></a>
+
+</p>
 
 ## Overview
 The documentation to assist you with on how to use PAJ Data API to intergrate it with you apps. 
