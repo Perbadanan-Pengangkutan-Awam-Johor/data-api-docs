@@ -65,7 +65,7 @@
     {
         "route": "route-geojson",
         "title": "Route GeoJson",
-        "description": "This API is use to get the info for each bus lines including the bus line code, total distance, total trip and etc.<br><br>Endpoint description: <code>Get list of bus line(s) filter by bus_vendor_id or name</code>",
+        "description": "GeoJSON is an open standard format designed for representing simple geographical features, along with their non-spatial attributes. PAJ use geojson as geographical to draw route, polygon and point coordinate with our system. 3rd party user can use this geojson data to retreive routes data use by BMJ.",
         "endpoint": "https://dataapi.paj.com.my/api/v1/route",
         "method": [
             {
