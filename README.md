@@ -21,7 +21,7 @@ Most of available open API provided is related to Bas Muafakat Johor (BMJ) which
 
 If you have any questions regarding our guides or suggestion, please contact PAJ Support at official@paj.com.my.
 
-## Available Routes
+## Available API
 
 Below are available API options that available by public users
 
@@ -76,7 +76,7 @@ Example of success response:
 }
 ```
 
-Example of success response:
+Example of error response:
 ```json
 {
     "status": "error",
@@ -106,6 +106,9 @@ In the case of zero data available for particular reponse. The system will simpl
     "data": []
 }
 ```
+## Acknowledgement
+<img src="/images/logo-paj-sm.png" height="50" />
+Thanks for support from Perbadanan Pengangkutan Awam Johor for making this public API possible
 
 
 
