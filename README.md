@@ -107,6 +107,7 @@ In the case of zero data available for particular reponse. The system will simpl
 }
 ```
 ## Acknowledgement
+<img src="/images/logo-paj-sm.png" height="50" />
 Thanks for support from Perbadanan Pengangkutan Awam Johor for making this public API possible
 
 
