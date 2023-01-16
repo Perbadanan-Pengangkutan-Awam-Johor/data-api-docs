@@ -33,32 +33,28 @@
         ],
         "response": [
             {
-                "name": "id",
-                "desc": "Id for each route"
+                "name": "name",
+                "desc": "The route number for the particular bus route"
             },
             {
                 "name": "bus_vendor_id",
                 "desc": "The id for the particular bus vendor/operator. This data is correlate with the bus vendor data. You can check all bus operator data here"
             },
             {
-                "name": "code",
-                "desc": "The route number for the particular bus route"
-            },
-            {
                 "name": "distance",
                 "desc": "The total distance of the bus route in <code>Kilometer</code>. This value is predetermined during the insertion of the bus line."
             },
             {
-                "name": "km_price",
-                "desc": "The price that need to be paid to the vendor in <code>Ringgit Malaysia</code> per each kilometer"
-            },
-            {
-                "name": "special_line",
-                "desc": "This is a special tag if the bus line considered as special line. Special line is when a particular route has a deviation from normal route at certain particular time. For normal user, you may not have any use for this option."
+                "name": "special_route",
+                "desc": "This is a special tag if the bus line considered as special route. Special route is when a particular route has a deviation from normal route at certain particular time. For normal user, you may not have any use for this option."
             },
             {
                 "name": "total_trip",
                 "desc": "A total of trip of that route in a day  (may not accurate if route is a special route)"
+            },
+            {
+                "name": "active",
+                "desc": "Indicator whether the route is currently be use PAJ"
             }
         ]
     },
@@ -66,28 +62,23 @@
         "route": "route-geojson",
         "title": "Route GeoJson",
         "description": "GeoJSON is an open standard format designed for representing simple geographical features, along with their non-spatial attributes. PAJ use geojson as geographical to draw route, polygon and point coordinate with our system. 3rd party user can use this geojson data to retreive routes data use by BMJ.",
-        "endpoint": "https://dataapi.paj.com.my/api/v1/route",
+        "endpoint": "https://dataapi.paj.com.my/api/v1/route-geojson",
         "method": [
             {
                 "method": "GET",
-                "endpoint": "/route",
-                "desc": "Get all bus line related data"
+                "endpoint": "/route-geojson",
+                "desc": "Get all geojson route data"
             },
             {
                 "method": "GET",
-                "endpoint": "/route/code/{code}",
-                "desc": "Get bus line data by route code"
-            },
-            {
-                "method": "GET",
-                "endpoint": "/route/operator/{operator_id}",
-                "desc": "Get bus line data by vendor id"
+                "endpoint": "/route-geojson/{name}",
+                "desc": "Get particular geojson by route name"
             }
         ],
         "request": [
             {
                 "language": "Javascript",
-                "code": "fetch('https://dataapi.paj.com.my/api/v1/route/code/P101', {\n\tmethod: 'GET',\n\theaders: {'api-key': 'YOUR_API_KEY'}\n})\n.then(res => res.json())\n.then(console.log)"
+                "code": "fetch('https://dataapi.paj.com.my/api/v1/route-geojson/BP001', {\n\tmethod: 'GET',\n\theaders: {'api-key': 'YOUR_API_KEY'}\n})\n.then(res => res.json())\n.then(console.log)"
             },
             {
                 "language": "Respond",
@@ -96,32 +87,12 @@
         ],
         "response": [
             {
-                "name": "id",
-                "desc": "Id for each route"
+                "name": "name",
+                "desc": "Name of the search route"
             },
             {
-                "name": "bus_vendor_id",
-                "desc": "The id for the particular bus vendor/operator. This data is correlate with the bus vendor data. You can check all bus operator data here"
-            },
-            {
-                "name": "code",
-                "desc": "The route number for the particular bus route"
-            },
-            {
-                "name": "distance",
-                "desc": "The total distance of the bus route in <code>Kilometer</code>. This value is predetermined during the insertion of the bus line."
-            },
-            {
-                "name": "km_price",
-                "desc": "The price that need to be paid to the vendor in <code>Ringgit Malaysia</code> per each kilometer"
-            },
-            {
-                "name": "special_line",
-                "desc": "This is a special tag if the bus line considered as special line. Special line is when a particular route has a deviation from normal route at certain particular time. For normal user, you may not have any use for this option."
-            },
-            {
-                "name": "total_trip",
-                "desc": "A total of trip of that route in a day  (may not accurate if route is a special route)"
+                "name": "geojson",
+                "desc": "GeoJSON data of the route. You may need to parse this data into readable form of valid GeoJSON before you can use it to draw a polyline into your map plugin of choices"
             }
         ]
     },
@@ -129,28 +100,23 @@
         "route": "route-schedule",
         "title": "Route Schedule",
         "description": "This API is use to get the info for each bus lines including the bus line code, total distance, total trip and etc.<br><br>Endpoint description: <code>Get list of bus line(s) filter by bus_vendor_id or name</code>",
-        "endpoint": "https://dataapi.paj.com.my/api/v1/route",
+        "endpoint": "https://dataapi.paj.com.my/api/v1/route-schedule",
         "method": [
             {
                 "method": "GET",
-                "endpoint": "/route",
-                "desc": "Get all bus line related data"
+                "endpoint": "/route-schedule",
+                "desc": "Get all trip data of all BMJ route"
             },
             {
                 "method": "GET",
-                "endpoint": "/route/code/{code}",
-                "desc": "Get bus line data by route code"
-            },
-            {
-                "method": "GET",
-                "endpoint": "/route/operator/{operator_id}",
-                "desc": "Get bus line data by vendor id"
+                "endpoint": "/route-schedule/{route}",
+                "desc": "Get a trip data of a BMJ route by route name"
             }
         ],
         "request": [
             {
                 "language": "Javascript",
-                "code": "fetch('https://dataapi.paj.com.my/api/v1/route/code/P101', {\n\tmethod: 'GET',\n\theaders: {'api-key': 'YOUR_API_KEY'}\n})\n.then(res => res.json())\n.then(console.log)"
+                "code": "fetch('https://dataapi.paj.com.my/api/v1/route-schedule/BP001', {\n\tmethod: 'GET',\n\theaders: {'api-key': 'YOUR_API_KEY'}\n})\n.then(res => res.json())\n.then(console.log)"
             },
             {
                 "language": "Respond",
@@ -159,55 +125,33 @@
         ],
         "response": [
             {
-                "name": "id",
-                "desc": "Id for each route"
+                "name": "route",
+                "desc": "Name of the route"
             },
             {
-                "name": "bus_vendor_id",
-                "desc": "The id for the particular bus vendor/operator. This data is correlate with the bus vendor data. You can check all bus operator data here"
+                "name": "trip",
+                "desc": "The trip data for the route by day of the week and its schedule"
             },
             {
-                "name": "code",
-                "desc": "The route number for the particular bus route"
+                "name": "dayofweek",
+                "desc": "The day of the week for the route. Can be from <code>sunday</code> to <code>saturday</code>"
             },
             {
-                "name": "distance",
-                "desc": "The total distance of the bus route in <code>Kilometer</code>. This value is predetermined during the insertion of the bus line."
-            },
-            {
-                "name": "km_price",
-                "desc": "The price that need to be paid to the vendor in <code>Ringgit Malaysia</code> per each kilometer"
-            },
-            {
-                "name": "special_line",
-                "desc": "This is a special tag if the bus line considered as special line. Special line is when a particular route has a deviation from normal route at certain particular time. For normal user, you may not have any use for this option."
-            },
-            {
-                "name": "total_trip",
-                "desc": "A total of trip of that route in a day  (may not accurate if route is a special route)"
+                "name": "schedule",
+                "desc": "The general start trip data the bus need to depart from the designation waiting station"
             }
         ]
     },
     {
         "route": "operators",
         "title": "Operator List",
-        "description": "This API is use to get the info for each bus lines including the bus line code, total distance, total trip and etc.<br><br>Endpoint description: <code>Get list of bus line(s) filter by bus_vendor_id or name</code>",
+        "description": "List of all operator working directly under ",
         "endpoint": "https://dataapi.paj.com.my/api/v1/route",
         "method": [
             {
                 "method": "GET",
-                "endpoint": "/route",
-                "desc": "Get all bus line related data"
-            },
-            {
-                "method": "GET",
-                "endpoint": "/route/code/{code}",
-                "desc": "Get bus line data by route code"
-            },
-            {
-                "method": "GET",
-                "endpoint": "/route/operator/{operator_id}",
-                "desc": "Get bus line data by vendor id"
+                "endpoint": "/operators",
+                "desc": "Get all operators working under PAJ"
             }
         ],
         "request": [
@@ -259,18 +203,23 @@
         "method": [
             {
                 "method": "GET",
-                "endpoint": "/route",
-                "desc": "Get all bus line related data"
+                "endpoint": "/bus-live",
+                "desc": "Get all live bus data"
             },
             {
                 "method": "GET",
-                "endpoint": "/route/code/{code}",
-                "desc": "Get bus line data by route code"
+                "endpoint": "bus-live/bus/{bus}",
+                "desc": "Get particular live bus data with requested bus plate. Eg: <code>JTV6100</code>, <code>JJU2633</code>"
             },
             {
                 "method": "GET",
-                "endpoint": "/route/operator/{operator_id}",
-                "desc": "Get bus line data by vendor id"
+                "endpoint": "/bus-live/operator/{operator}",
+                "desc": "Get all live bus data by operator name. Need to be in all capatilize word. Eg: <code>MAYANG SARI</code>, <code>HANDAL INDAH</code>"
+            },
+            {
+                "method": "GET",
+                "endpoint": "/bus-live/route/{route}",
+                "desc": "Get all live bus data by route name. Eg: <code>BP001</code>, <code>P101</code>"
             }
         ],
         "request": [
@@ -322,18 +271,18 @@
         "method": [
             {
                 "method": "GET",
-                "endpoint": "/route",
-                "desc": "Get all bus line related data"
+                "endpoint": "/bus-stop",
+                "desc": "Get all PAJ bus stops"
             },
             {
                 "method": "GET",
-                "endpoint": "/route/code/{code}",
-                "desc": "Get bus line data by route code"
+                "endpoint": "/bus-stop/route/{route}",
+                "desc": "Get all bus stops at particular route"
             },
             {
                 "method": "GET",
-                "endpoint": "/route/operator/{operator_id}",
-                "desc": "Get bus line data by vendor id"
+                "endpoint": "/bus-stop/type/{type}",
+                "desc": "Get all bus stops filter by type of the stop. Can be <code>Terminal</code>, <code>Pole</code> and <code>Terminal</code>"
             }
         ],
         "request": [
@@ -385,18 +334,13 @@
         "method": [
             {
                 "method": "GET",
-                "endpoint": "/route",
-                "desc": "Get all bus line related data"
+                "endpoint": "/bus-list",
+                "desc": "Get all Bas Muafakat Johor bus"
             },
             {
                 "method": "GET",
-                "endpoint": "/route/code/{code}",
-                "desc": "Get bus line data by route code"
-            },
-            {
-                "method": "GET",
-                "endpoint": "/route/operator/{operator_id}",
-                "desc": "Get bus line data by vendor id"
+                "endpoint": "/bus-list/{operator}",
+                "desc": "Get bus list filter out by operator name"
             }
         ],
         "request": [
@@ -444,22 +388,17 @@
         "route": "bus-history",
         "title": "Bus History",
         "description": "This API is use to get the info for each bus lines including the bus line code, total distance, total trip and etc.<br><br>Endpoint description: <code>Get list of bus line(s) filter by bus_vendor_id or name</code>",
-        "endpoint": "https://dataapi.paj.com.my/api/v1/route",
+        "endpoint": "https://dataapi.paj.com.my/api/v1/bus-history",
         "method": [
             {
                 "method": "GET",
-                "endpoint": "/route",
-                "desc": "Get all bus line related data"
+                "endpoint": "/bus-history/{bus}/{date}",
+                "desc": "Get all previous/history bus data at particular date"
             },
             {
                 "method": "GET",
-                "endpoint": "/route/code/{code}",
-                "desc": "Get bus line data by route code"
-            },
-            {
-                "method": "GET",
-                "endpoint": "/route/operator/{operator_id}",
-                "desc": "Get bus line data by vendor id"
+                "endpoint": "/bus-history/{bus}/{date}/{timefrom}/{timeto}",
+                "desc": "Get all previous bus data filter out within a timestamp in a day"
             }
         ],
         "request": [
