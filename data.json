@@ -209,17 +209,17 @@
             {
                 "method": "GET",
                 "endpoint": "bus-live/bus/{bus}",
-                "desc": "Get particular live bus data with requested bus plate. <br>Eg: <code>JTV6100</code>, <code>JJU2633</code>"
+                "desc": "Get particular live bus data with requested bus plate. Eg: <code>JTV6100</code>, <code>JJU2633</code>"
             },
             {
                 "method": "GET",
                 "endpoint": "/bus-live/operator/{operator}",
-                "desc": "Get all live bus data by operator name. Need to be in all capatilize word. <br>Eg: <code>MAYANG SARI</code>, <code>HANDAL INDAH</code>"
+                "desc": "Get all live bus data by operator name. Need to be in all capatilize word. Eg: <code>MAYANG SARI</code>, <code>HANDAL INDAH</code>"
             },
             {
                 "method": "GET",
                 "endpoint": "/bus-live/route/{route}",
-                "desc": "Get all live bus data by route name. <br>Eg: <code>BP001</code>, <code>P101</code>"
+                "desc": "Get all live bus data by route name. Eg: <code>BP001</code>, <code>P101</code>"
             }
         ],
         "request": [
