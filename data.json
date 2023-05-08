@@ -326,6 +326,64 @@
             }
         ]
     },
+       {
+        "route": "bus-history",
+        "title": "Bus History",
+        "description": "Read the bus history from the database for a given bus. You may need to know the bus plate in order to determine the historical coordinate of the bus.<br><br>Endpoint description: <code>Get list of latitude, longitude, speed and bearing for a given bus</code>",
+        "endpoint": "https://dataapi.paj.com.my/api/v1/bus-history",
+        "method": [
+          {
+                "method": "GET",
+                "endpoint": "/bus-history/{bus}/{date}",
+                "desc": "Get bus history data by a date"
+            },
+            {
+                "method": "GET",
+                "endpoint": "/bus-history/{bus}/{date}/{timefrom}/{timeto}",
+                "desc": "Get bus history data by limiting between two specific time in a day"
+            }
+        ],
+        "request": [
+            {
+                "language": "Javascript",
+                "code": "fetch('https://dataapi.paj.com.my/api/v1/route/code/P101', {\n\tmethod: 'GET',\n\theaders: {'api-key': 'YOUR_API_KEY'}\n})\n.then(res => res.json())\n.then(console.log)"
+            },
+            {
+                "language": "Respond",
+                "code": "{\n \"status\": \"success\",\n\"timestamps\": \"2022-08-19 17:24:00\",\n\"data\": [\n{\n\"id\": 42,\n\"bus_vendor_id\": 1,\n\"code\": \"P101\",\n\"distance\": 21.5,\n\"km_price\": 3.83,\n\"schedule_status\": 1,\n\"special_line\": 0,\n\"total_trip\": 33,\n\"description\": \"P101\"\n}\n]\n}"
+            }
+        ],
+        "response": [
+            {
+                "name": "id",
+                "desc": "Id for each route"
+            },
+            {
+                "name": "bus_vendor_id",
+                "desc": "The id for the particular bus vendor/operator. This data is correlate with the bus vendor data. You can check all bus operator data here"
+            },
+            {
+                "name": "code",
+                "desc": "The route number for the particular bus route"
+            },
+            {
+                "name": "distance",
+                "desc": "The total distance of the bus route in <code>Kilometer</code>. This value is predetermined during the insertion of the bus line."
+            },
+            {
+                "name": "km_price",
+                "desc": "The price that need to be paid to the vendor in <code>Ringgit Malaysia</code> per each kilometer"
+            },
+            {
+                "name": "special_line",
+                "desc": "This is a special tag if the bus line considered as special line. Special line is when a particular route has a deviation from normal route at certain particular time. For normal user, you may not have any use for this option."
+            },
+            {
+                "name": "total_trip",
+                "desc": "A total of trip of that route in a day  (may not accurate if route is a special route)"
+            }
+        ]
+    },
     {
         "route": "bus-list",
         "title": "Bus List",
